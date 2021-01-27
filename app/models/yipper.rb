@@ -1,0 +1,2 @@
+class Yipper < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class YippersController < ApplicationController
+end
