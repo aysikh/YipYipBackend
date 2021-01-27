@@ -1,5 +1,5 @@
 class YippersController < ApplicationController
-  before_action :find_yipper, only [:show, :edit]
+  before_action :find_yipper, only [:show]
 
   def index
     @yippers = Yipper.all
