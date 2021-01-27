@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   has_many :yippers
   has_many :comments
+  
   belongs_to :location
 
   validates :name, presence: true
