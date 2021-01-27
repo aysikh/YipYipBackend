@@ -1,5 +1,5 @@
 class YippersController < ApplicationController
-  before_action :find_yipper, only [:show]
+  before_action :find_yipper, only: [:show]
 
   def index
     @yippers = Yipper.all
@@ -25,23 +25,25 @@ class YippersController < ApplicationController
         errors: true, 
         info: ["yipper cannot be created"]
       }
+    end
   end
 
   def destroy
     @yippers = Yipper.all
     @yipper = find_yipper
     if @user.destroy
-      render :json {
+      render json: {
         yipper: yippers, 
         errors: "yipper was deleted",
         success: true
       }
     else
-      render :json {
+      render json: {
         success: false,
         errors: false,
         info: ["cannot delete yipper"]
       }
+    end
   end
 
   private

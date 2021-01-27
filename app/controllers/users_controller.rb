@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only [:show, :edit]
+  before_action :find_user, only: [:show, :edit]
 
   def index
     @users = User.all
@@ -26,6 +26,7 @@ class UsersController < ApplicationController
         errors: true,
         info: ["user cannot be created"]
       }
+    end
   end
 
   def edit
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
     if @user
       @user.update(user_params)
       render json: {
-        user: @user
+        user: @user,
         errors: false
       }
     else
@@ -44,23 +45,25 @@ class UsersController < ApplicationController
         errors: true, 
         info: ["user cannot be updated"]
       }
+    end
   end
 
   def destroy
     @users = User.all
     @user = find_user
     if @user.destroy 
-      render :json {
+      render json: {
         user: users, 
         errors: "user has been deleted",
         success: true
       }
     else
-      render :json {
+      render json: {
         success: false, 
         errors: false, 
         info: ["cannot delete user"]
       }
+    end
   end
 
   private
